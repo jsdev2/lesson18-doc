@@ -1,22 +1,36 @@
-# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Deploying Your App to Github, Using Canvas for Graphics (3:00)
+# ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Deploying Your App (3:00)
 
-| Timing | Type | Topic |
+---
 
-tktk
+| Timing | Topic |
+| --- | --- |
+| 5 min |  Recap: Firebase Database, Firebase Hosting |
+| 20 min |  Intro to git/Github |
+| 40 min |  Github Desktop |
+| 20 min |  Practice with Github  |
+| 10 min |  git/Github loose ends |
+| 10 min |  Canvas basics |
+| 25 min |  Canvas codealong |
+| 20 min |  Lab: Squares on Click |
+| 20 min |  Lab: Multiple Shapes on Click |
+| 5 min |  Canvas Wrapup |
+| 5 min |  Conclusion |
+
+
 
 ### Objectives
 
-_After this lesson, students will be able to:_
+_After this lesson, you will be able to:_
 
 - Understand what the git version control system is.
 - Push their code to Github.
 - Deploy their app to GitHub Pages.
 - Make basic shapes using Canvas
-- Make an interactive drawing app using Canvas and Firebase.
+- See some of the more sophisticated things that can be done with Canvas
 
 ### Preparation
 
-_Before this lesson, students should already be able to:_
+_Before this lesson, you should already be able to:_
 
 - Explain deployment, and deploy to Firebase.
 
@@ -62,7 +76,7 @@ To track our code using git, and to upload it to Github, we'll be using a deskto
 
 
 
-## Github Desktop (45 min)
+## Github Desktop (40 min)
 
 ### Creating a new repo
 
@@ -191,8 +205,6 @@ And you can also do it the other way around: You can edit files in Github itself
 
 - Make a few more commits, syncing them with Github and going to Github to see the changes. (If you want you can also make some changes from Github, and sync them to your local to see the changes there.)
 
-- tktk add more here? A more specific exercise, or a more extended exercise?
-
 - Bonus: Create another new repo (with a different name, like `my-new-repo`), add a couple files and publish it to Github.
 
 ## Last couple of git/Github loose ends (10 min)
@@ -219,10 +231,12 @@ To turn an existing folder into a git repo:
 
 This has scratched the tip of the iceberg of what you can do with git. 
 
-- tktk add some stuff here
-- tktk add some more stuff here
+- You can create different branches of your code, and merge them back into the main branch
+- You can easily make a copy of anyone's open source project, work on it yourself, and submit proposed changes
+- You can go back in time if you realize you liked it better the old way, or you need to fix a bug.
 
 I encourage you to learn more about it, at your own pace. I find it extremely helpful not just for collaborating with others, but also for organizing my own thoughts.
+
 
 
 ## Firebase vs. Github wrapup, and Heroku (10 min)
@@ -248,13 +262,94 @@ I encourage you to learn more about it, at your own pace. I find it extremely he
 
 ---
 
-## Canvas
+**Further resources:**
 
-tktk
+- [Github's short guid to Github Desktop](https://guides.github.com/introduction/getting-your-project-on-github/)
+- [Getting started with Github Desktop](https://help.github.com/desktop/guides/getting-started/)
+
 
 ---
 
+<a name = "opening"></a>
+## HTML5 Canvas (10 min)
 
-## Conclusion
+Canvas is a native feature of the browser, often called part of a group of features collectively called "HTML5". Canvas facilitates drawing and graphics. It gives you a few simple tools to work with, but you can use them to make really powerful graphics and data visualizations with it.
 
-tktk
+In this lesson we'll create some shapes using vanilla JavaScript and HTML5 Canvas, and if we have time, make it a realtime interactive app using Firebase. 
+
+>Take a quick look at some of the cool stuff you could theoretically do with Canvas: [21 Ridiculously Impressive HTML Canvas Experiments](http://code.tutsplus.com/articles/21-ridiculously-impressive-html5-canvas-experiments--net-14210).
+
+### Canvas basics
+
+- You start out with an html `canvas` element, which has to have `height` and `width` attributes.
+- Then you create what's called a "context", by passing a string to a method on the canvas object to indicate whether you want it to be 2d ("2d") or 3d ("webgl"). We're going with 2d today.
+- All manipulation of the canvas will be on the context object that is returned from `canvasElement.getContext()`
+
+```html
+<canvas class="my-canvas" width="600" height="400"></canvas>
+```
+
+```js
+var canvasEl = document.querySelector('.my-canvas');
+var ctx = canvasEl.getContext('2d');
+```
+
+>Note: The reason I'm using the very short variable name `ctx` is that we're going to end up typing it a billion times.
+
+
+
+- Then you're ready to run your drawing methods.
+  - There are a number of styling methods, to set basic styles for filling and stroking your shapes
+  - For all methods that take x and y coordinates, 0,0 is at the top left of the canvas. Numbers are in pixels.
+
+There are only two basic shapes in Canvas: rectangles and paths. All other shapes, like triangles and circles, are drawn using paths.
+
+- Rectangles are pretty straightforward, and take a starting x-coordinate, a starting y-coordinate, and a width and a height.
+- Paths take a few steps:
+  - Create the path
+  - Use drawing commands to shape the path
+  - Close the path (optional)
+  - Stroke or fill the path to render it on the screen
+
+Now let's jump into it. The best way to learn Canvas is with a codealong!
+
+## Canvas Codealong: Basic shapes and styling (25 min)
+
+>Note: Many of the examples in the codealong are taken from the very excellent tutorial at [Mozilla Developers Network](https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial)
+
+Please download all the code for today from https://github.com/jsdev2/lesson18-code -- and move it into your `~/GA-JS` folder.
+
+>Note: We'll try something different today, which is that all the solutions are in these folders as well. Feel free to look at them during the exercises if you're struggling with the Canvas functions, which are not rocket science but there's a lot of stuff to remember about what all the arguments are supposed to mean.
+
+## Lab: Squares on Click (20 min)
+
+Follow the directions in the starter code in the `2_squares_on_click` folder:
+
+
+
+## Lab: Multiple Shapes on Click (20 min)
+
+Follow the directions in the starter code in the `3_multiple_squares_on_click` folder:
+
+
+
+
+## Canvas Wrapup (5 min)
+
+That was just a little taste of the things you can do with Canvas. 
+
+It's nice that these tools come with every browser, but there are also many libraries that have been written as wrappers around Canvas, to allow you to abstract things like shapes and animation.
+
+Here are some good ones to check out: `d3`, `chart.js`, `three.js`, `babylon.js`, `paper.js`, `p5.js`
+
+
+---
+<a name = "conclusion"></a>
+## Conclusion (5 min)
+
+Review class objectives and the following questions:
+
+- Why would you want to use GitHub Pages over Firebase Hosting and vice versa?
+- When would you need to use something like Heroku?
+- How cool is Canvas?
+
